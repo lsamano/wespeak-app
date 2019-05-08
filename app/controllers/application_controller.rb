@@ -1,11 +1,20 @@
 class ApplicationController < ActionController::Base
-  def logged_in?
-    !!session[:user_id]
+  before_action :setup
+
+  def setup
+    @logged_in = !!session[:user_id] #!= nil
+    if @logged_in
+      @current_user = User.find(session[:user_id])
+    end
   end
 
-  def current_user
-    User.find(session[:user_id])
-  end
+  # def logged_in?
+  #   !!session[:user_id]
+  # end
+  #
+  # def current_user
+  #   User.find(session[:user_id])
+  # end
 
   def log_in_user(user_id)
     session[:user_id] = user_id
@@ -14,4 +23,5 @@ class ApplicationController < ActionController::Base
   def log_out_user
     session[:user_id] = nil
   end
+
 end

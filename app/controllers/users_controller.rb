@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  
+  before_action :check_if_logged_in, only: [:index]
+
   def index
     @users = User.all
   end
@@ -48,5 +49,11 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def check_if_logged_in
+    unless @logged_in
+      redirect_to new_login_path
+    end
   end
 end
