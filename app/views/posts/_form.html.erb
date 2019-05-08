@@ -1,0 +1,17 @@
+<%= form_for @post do |f| %>
+
+  <ul>
+    <li>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </li>
+    <li>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+    </li>
+      <%= f.hidden_field :user_id, value: @current_user.id %> 
+  </ul>
+
+  <%= f.submit %>
+
+<% end %>
