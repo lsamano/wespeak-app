@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     @logged_in = !!session[:user_id] #!= nil
     if @logged_in
       @current_user = User.find(session[:user_id])
+      @current_user_id = @current_user.id
     end
   end
 
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def home
-    redirect_to new_login_path
+    redirect_to posts_path
   end
 
 end
