@@ -23,6 +23,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    unless @current_user.id == @post.user.id
+      redirect_to post_path(@post)
+    end
   end
 
   def update

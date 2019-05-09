@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
   end
 
+  def home
+    redirect_to new_login_path
+  end
+
 end

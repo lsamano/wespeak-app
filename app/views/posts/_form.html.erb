@@ -7,9 +7,9 @@
     </li>
     <li>
       <%= f.label :content %>
-      <%= f.text_field :content %>
+      <%= f.text_area :content %>
     </li>
-      <%= f.hidden_field :user_id, value: @current_user.id %> 
+      <%= f.hidden_field :user_id, value: @current_user.id %>
   </ul>
 
   <%= f.submit %>

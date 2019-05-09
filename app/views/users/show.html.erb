@@ -1,4 +1,4 @@
-hi <%= @user.username%>.
+<h1><%= @user.username%>'s Page</h1>
 <p><%= @user.bio %></p>
 
-<%= link_to "Edit User", edit_user_path %>
+<%= @current_user.id == @user.id ? (link_to "Settings", edit_user_path) : nil %>
